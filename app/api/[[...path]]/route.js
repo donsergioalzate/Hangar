@@ -81,16 +81,32 @@ async function handleGetProps(req) {
   if (categoryId) filter.categoryId = categoryId;
   if (search) filter.name = { $regex: search, $options: 'i' };
 
-  const props = await db.collection('props').find(filter).sort({ createdAt: -1 }).toArray();
+  const props = await db.collection('props').find(filter).sort({ createdAt: -1 }).limit(200).toArray();
 
-  // Add stock warning if dates provided
+  // Batch stock overlap check — single query instead of N+1
   if (startDate && endDate) {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const propIds = props.filter(p => !p.stockOverride).map(p => p.id);
+
+    let overlappingPropIds = new Set();
+    if (propIds.length > 0) {
+      const overlappingQuotes = await db.collection('quotes').find({
+        status: 'CONFIRMED',
+        startDate: { $lte: end },
+        endDate: { $gte: start },
+        'items.propId': { $in: propIds }
+      }).project({ 'items.propId': 1 }).toArray();
+
+      overlappingQuotes.forEach(q => {
+        (q.items || []).forEach(item => {
+          if (propIds.includes(item.propId)) overlappingPropIds.add(item.propId);
+        });
+      });
+    }
+
     for (let prop of props) {
-      if (!prop.stockOverride) {
-        prop.hasStockWarning = await checkStockOverlap(db, prop.id, startDate, endDate);
-      } else {
-        prop.hasStockWarning = false;
-      }
+      prop.hasStockWarning = !prop.stockOverride && overlappingPropIds.has(prop.id);
     }
   }
 
