@@ -33,7 +33,7 @@ export default function CheckoutPage() {
 
   if (status === 'loading') {
     return (
-      <div className="min-h-screen bg-[#FFE600]">
+      <div className="min-h-screen bg-[#ffc832]">
         <Navbar />
         <div className="max-w-7xl mx-auto px-4 py-16 text-center">
           <div className="font-heading text-2xl font-black animate-pulse">Cargando...</div>
@@ -44,7 +44,7 @@ export default function CheckoutPage() {
 
   if (status === 'unauthenticated') {
     return (
-      <div className="min-h-screen bg-[#FFE600]">
+      <div className="min-h-screen bg-[#ffc832]">
         <Navbar />
         <div className="max-w-lg mx-auto px-4 py-16">
           <div className="card-brutal p-10 text-center">
@@ -62,7 +62,7 @@ export default function CheckoutPage() {
 
   if (items.length === 0 && !success) {
     return (
-      <div className="min-h-screen bg-[#FFE600]">
+      <div className="min-h-screen bg-[#ffc832]">
         <Navbar />
         <div className="max-w-lg mx-auto px-4 py-16">
           <div className="card-brutal p-10 text-center">
@@ -79,13 +79,13 @@ export default function CheckoutPage() {
 
   if (success) {
     return (
-      <div className="min-h-screen bg-[#FFE600]">
+      <div className="min-h-screen bg-[#ffc832]">
         <Navbar />
         <div className="max-w-lg mx-auto px-4 py-16">
           <div className="card-brutal p-10 text-center">
             <CheckCircle size={64} className="mx-auto mb-6 text-green-500" />
             <h2 className="font-heading text-4xl font-black uppercase mb-3">¡Cotización Enviada!</h2>
-            <div className="bg-[#FFE600] border-4 border-black p-4 mb-6 shadow-brutal-sm">
+            <div className="bg-[#ffc832] border-4 border-black p-4 mb-6 shadow-brutal-sm">
               <p className="text-xs font-black uppercase text-gray-600">Folio</p>
               <p className="font-heading text-3xl font-black">{success.folio}</p>
             </div>
@@ -137,7 +137,7 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFE600]">
+    <div className="min-h-screen bg-[#ffc832]">
       <Navbar />
 
       {/* Header */}
@@ -234,7 +234,7 @@ export default function CheckoutPage() {
               <h2 className="font-heading font-black uppercase text-xl mb-4 border-b-4 border-black pb-4">Resumen del Pedido</h2>
 
               {/* Dates */}
-              <div className="bg-[#FFE600] border-2 border-black p-3 mb-4">
+              <div className="bg-[#ffc832] border-2 border-black p-3 mb-4">
                 <p className="text-xs font-black uppercase text-gray-600">Período</p>
                 <p className="font-bold">{startDate} → {endDate}</p>
                 <p className="text-sm font-black mt-1">{totalDays} {totalDays === 1 ? 'día' : 'días'}</p>
@@ -246,7 +246,7 @@ export default function CheckoutPage() {
                     <div className="w-12 h-12 flex-shrink-0 border-2 border-black overflow-hidden bg-gray-100">
                       {item.imageUrl ? (
                         <img src={item.imageUrl} alt={item.propName} className="w-full h-full object-cover" />
-                      ) : <div className="w-full h-full bg-[#FFE600]" />}
+                      ) : <div className="w-full h-full bg-[#ffc832]" />}
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-bold text-xs uppercase truncate">{item.propName}</p>
@@ -275,3 +275,4 @@ export default function CheckoutPage() {
     </div>
   );
 }
+

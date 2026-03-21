@@ -146,13 +146,13 @@ export default function InventarioPage() {
       <div className="flex border-4 border-black mb-8 shadow-brutal w-fit">
         <button
           onClick={() => setActiveTab('props')}
-          className={`px-6 py-3 font-black uppercase text-sm border-r-2 border-black transition-colors ${activeTab === 'props' ? 'bg-black text-[#FFE600]' : 'bg-[#FFE600] text-black hover:bg-white'}`}
+          className={`px-6 py-3 font-black uppercase text-sm border-r-2 border-black transition-colors ${activeTab === 'props' ? 'bg-black text-[#ffc832]' : 'bg-[#ffc832] text-black hover:bg-white'}`}
         >
           Props ({props.length})
         </button>
         <button
           onClick={() => setActiveTab('categories')}
-          className={`px-6 py-3 font-black uppercase text-sm transition-colors ${activeTab === 'categories' ? 'bg-black text-[#FFE600]' : 'bg-[#FFE600] text-black hover:bg-white'}`}
+          className={`px-6 py-3 font-black uppercase text-sm transition-colors ${activeTab === 'categories' ? 'bg-black text-[#ffc832]' : 'bg-[#ffc832] text-black hover:bg-white'}`}
         >
           Categorías ({categories.length})
         </button>
@@ -173,23 +173,23 @@ export default function InventarioPage() {
             <div className="overflow-x-auto">
               <table className="w-full border-4 border-black">
                 <thead>
-                  <tr className="bg-black text-[#FFE600]">
-                    <th className="text-left px-4 py-3 font-black uppercase text-xs border-r-2 border-[#FFE600]">Prop</th>
-                    <th className="text-left px-4 py-3 font-black uppercase text-xs border-r-2 border-[#FFE600] hidden md:table-cell">Categoría</th>
-                    <th className="text-right px-4 py-3 font-black uppercase text-xs border-r-2 border-[#FFE600]">$/Día</th>
-                    <th className="text-center px-4 py-3 font-black uppercase text-xs border-r-2 border-[#FFE600]">Stock</th>
+                  <tr className="bg-black text-[#ffc832]">
+                    <th className="text-left px-4 py-3 font-black uppercase text-xs border-r-2 border-[#ffc832]">Prop</th>
+                    <th className="text-left px-4 py-3 font-black uppercase text-xs border-r-2 border-[#ffc832] hidden md:table-cell">Categoría</th>
+                    <th className="text-right px-4 py-3 font-black uppercase text-xs border-r-2 border-[#ffc832]">$/Día</th>
+                    <th className="text-center px-4 py-3 font-black uppercase text-xs border-r-2 border-[#ffc832]">Stock</th>
                     <th className="text-center px-4 py-3 font-black uppercase text-xs">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
                   {props.map((prop, i) => (
-                    <tr key={prop.id} className={`border-b-2 border-black ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-[#FFE600]/30 transition-colors`}>
+                    <tr key={prop.id} className={`border-b-2 border-black ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-[#ffc832]/30 transition-colors`}>
                       <td className="px-4 py-3 border-r-2 border-black">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 flex-shrink-0 border-2 border-black overflow-hidden bg-gray-100">
                             {prop.images?.[0]?.url ? (
                               <img src={prop.images[0].url} alt={prop.name} className="w-full h-full object-cover" />
-                            ) : <div className="w-full h-full bg-[#FFE600]" />}
+                            ) : <div className="w-full h-full bg-[#ffc832]" />}
                           </div>
                           <div>
                             <p className="font-bold text-sm">{prop.name}</p>
@@ -203,14 +203,14 @@ export default function InventarioPage() {
                         <button
                           onClick={() => toggleStock(prop)}
                           title={prop.stockOverride ? 'Stock OK (click para quitar override)' : 'Sin override (click para marcar stock OK)'}
-                          className={`inline-flex items-center gap-1 px-2 py-1 border-2 border-black text-xs font-bold transition-colors ${prop.stockOverride ? 'bg-green-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-[#FFE600]'}`}
+                          className={`inline-flex items-center gap-1 px-2 py-1 border-2 border-black text-xs font-bold transition-colors ${prop.stockOverride ? 'bg-green-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-[#ffc832]'}`}
                         >
                           {prop.stockOverride ? <><Eye size={12} /> OK</> : <><EyeOff size={12} /> —</>}
                         </button>
                       </td>
                       <td className="px-4 py-3 text-center">
                         <div className="flex items-center justify-center gap-2">
-                          <button onClick={() => openPropEdit(prop)} className="p-1.5 border-2 border-black hover:bg-[#FFE600] transition-colors">
+                          <button onClick={() => openPropEdit(prop)} className="p-1.5 border-2 border-black hover:bg-[#ffc832] transition-colors">
                             <Pencil size={14} />
                           </button>
                           <button onClick={() => deleteProp(prop.id)} className="p-1.5 border-2 border-black hover:bg-red-500 hover:text-white hover:border-red-600 transition-colors">
@@ -236,7 +236,7 @@ export default function InventarioPage() {
             <div key={cat.id} className="card-brutal p-4 flex items-center justify-between">
               <span className="font-heading font-black uppercase">{cat.name}</span>
               <div className="flex gap-2">
-                <button onClick={() => openCatEdit(cat)} className="p-1.5 border-2 border-black hover:bg-[#FFE600] transition-colors">
+                <button onClick={() => openCatEdit(cat)} className="p-1.5 border-2 border-black hover:bg-[#ffc832] transition-colors">
                   <Pencil size={14} />
                 </button>
                 <button onClick={() => deleteCat(cat.id)} className="p-1.5 border-2 border-black hover:bg-red-500 hover:text-white transition-colors">
@@ -252,7 +252,7 @@ export default function InventarioPage() {
       {showPropForm && (
         <div className="fixed inset-0 z-50 bg-black/60 flex items-start justify-center pt-8 px-4 overflow-y-auto">
           <div className="card-brutal w-full max-w-2xl mb-8">
-            <div className="flex items-center justify-between p-6 border-b-4 border-black bg-[#FFE600]">
+            <div className="flex items-center justify-between p-6 border-b-4 border-black bg-[#ffc832]">
               <h2 className="font-heading font-black text-xl uppercase">{editingProp ? 'Editar Prop' : 'Nuevo Prop'}</h2>
               <button onClick={() => setShowPropForm(false)} className="p-1 hover:bg-black/10"><X size={20} /></button>
             </div>
@@ -285,7 +285,7 @@ export default function InventarioPage() {
                 <div className="sm:col-span-2">
                   <div className="flex items-center justify-between mb-2">
                     <label className="text-xs font-black uppercase">URLs de Imágenes (máx. 5)</label>
-                    <button type="button" onClick={addImageField} disabled={propForm.images.length >= 5} className="text-xs font-bold border-2 border-black px-2 py-1 hover:bg-[#FFE600] disabled:opacity-40">
+                    <button type="button" onClick={addImageField} disabled={propForm.images.length >= 5} className="text-xs font-bold border-2 border-black px-2 py-1 hover:bg-[#ffc832] disabled:opacity-40">
                       + Agregar
                     </button>
                   </div>
@@ -323,7 +323,7 @@ export default function InventarioPage() {
       {showCatForm && (
         <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center px-4">
           <div className="card-brutal w-full max-w-md">
-            <div className="flex items-center justify-between p-5 border-b-4 border-black bg-[#FFE600]">
+            <div className="flex items-center justify-between p-5 border-b-4 border-black bg-[#ffc832]">
               <h2 className="font-heading font-black uppercase">{editingCat ? 'Editar Categoría' : 'Nueva Categoría'}</h2>
               <button onClick={() => setShowCatForm(false)}><X size={20} /></button>
             </div>
@@ -343,3 +343,4 @@ export default function InventarioPage() {
     </div>
   );
 }
+

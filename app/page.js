@@ -41,14 +41,14 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFE600]">
+    <div className="min-h-screen bg-[#ffc832]">
       <Navbar />
 
       {/* Seed Banner — only when no data */}
       {categories.length === 0 && !seeded && (
-        <div className="bg-black text-[#FFE600] border-b-4 border-[#FFE600] px-4 py-3 text-center">
+        <div className="bg-black text-[#ffc832] border-b-4 border-[#ffc832] px-4 py-3 text-center">
           <span className="font-bold text-sm mr-4">🚀 Base de datos vacía — Carga datos de demostración para explorar la app</span>
-          <button onClick={handleSeed} className="bg-[#FFE600] text-black border-2 border-[#FFE600] px-4 py-1 font-black text-sm uppercase hover:bg-white transition-colors">
+          <button onClick={handleSeed} className="bg-[#ffc832] text-black border-2 border-[#ffc832] px-4 py-1 font-black text-sm uppercase hover:bg-white transition-colors">
             Cargar Demo
           </button>
         </div>
@@ -59,7 +59,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <div className="inline-block bg-black text-[#FFE600] border-4 border-black px-4 py-1 text-sm font-black uppercase mb-6 shadow-brutal-sm">
+              <div className="inline-block bg-black text-[#ffc832] border-4 border-black px-4 py-1 text-sm font-black uppercase mb-6 shadow-brutal-sm">
                 Props para Producción Publicitaria
               </div>
               <h1 className="font-heading text-6xl md:text-8xl font-black leading-none text-black mb-6 uppercase tracking-tighter">
@@ -89,11 +89,11 @@ export default function App() {
                   />
                 ) : (
                   <div className="w-full h-full bg-black flex items-center justify-center">
-                    <span className="text-[#FFE600] font-black text-6xl">H</span>
+                    <span className="text-[#ffc832] font-black text-6xl">H</span>
                   </div>
                 )}
               </div>
-              <div className="absolute -bottom-4 -right-4 bg-[#FFE600] border-4 border-black px-4 py-2 font-black text-black text-sm shadow-brutal">
+              <div className="absolute -bottom-4 -right-4 bg-[#ffc832] border-4 border-black px-4 py-2 font-black text-black text-sm shadow-brutal">
                 +{featuredProps.length > 0 ? '100' : '0'} PROPS
               </div>
             </div>
@@ -110,8 +110,8 @@ export default function App() {
               { num: '24h', label: 'Respuesta Garantizada' },
               { num: '10+', label: 'Años de Experiencia' }
             ].map((s, i) => (
-              <div key={i} className={`px-8 py-6 text-center ${i < 2 ? 'border-r-4 border-[#FFE600]' : ''}`}>
-                <div className="font-heading text-4xl font-black text-[#FFE600]">{s.num}</div>
+              <div key={i} className={`px-8 py-6 text-center ${i < 2 ? 'border-r-4 border-[#ffc832]' : ''}`}>
+                <div className="font-heading text-4xl font-black text-[#ffc832]">{s.num}</div>
                 <div className="text-sm font-bold text-white uppercase tracking-wider mt-1">{s.label}</div>
               </div>
             ))}
@@ -166,7 +166,7 @@ export default function App() {
                     {prop.images?.[0]?.url ? (
                       <img src={prop.images[0].url} alt={prop.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                     ) : (
-                      <div className="w-full h-full bg-[#FFE600] flex items-center justify-center">
+                      <div className="w-full h-full bg-[#ffc832] flex items-center justify-center">
                         <Package size={40} className="text-black" />
                       </div>
                     )}
@@ -176,7 +176,7 @@ export default function App() {
                     <p className="text-xs text-gray-600 mb-3">{prop.dimensions}</p>
                     <div className="flex items-center justify-between">
                       <span className="font-black text-lg">${prop.pricePerDay?.toLocaleString('es-MX')}<span className="text-xs font-normal text-gray-500">/día</span></span>
-                      <span className="bg-black text-[#FFE600] text-xs font-bold px-2 py-1">VER</span>
+                      <span className="bg-black text-[#ffc832] text-xs font-bold px-2 py-1">VER</span>
                     </div>
                   </div>
                 </Link>
@@ -200,7 +200,7 @@ export default function App() {
                 <div className="flex items-start gap-4">
                   <span className="font-heading text-5xl font-black text-black opacity-20">{s.n}</span>
                   <div>
-                    <div className="bg-[#FFE600] border-4 border-black p-3 w-fit mb-4 shadow-brutal-sm">
+                    <div className="bg-[#ffc832] border-4 border-black p-3 w-fit mb-4 shadow-brutal-sm">
                       {s.icon}
                     </div>
                     <h3 className="font-heading text-xl font-black uppercase mb-3">{s.title}</h3>
@@ -218,7 +218,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="font-heading text-4xl font-black uppercase text-[#FFE600] mb-6">Sobre Hangar</h2>
+              <h2 className="font-heading text-4xl font-black uppercase text-[#ffc832] mb-6">Sobre Hangar</h2>
               <p className="text-white text-lg leading-relaxed mb-6">
                 Somos el aliado estratégico de las agencias de publicidad y directores de arte más exigentes de México. Con más de 10 años rentando props de alta calidad para producciones audiovisuales.
               </p>
@@ -233,7 +233,7 @@ export default function App() {
                 { label: 'Piezas en Catálogo', value: '100+' },
                 { label: 'Años de Experiencia', value: '10+' }
               ].map((s, i) => (
-                <div key={i} className="bg-[#FFE600] border-4 border-[#FFE600] p-6 shadow-[6px_6px_0px_0px_rgba(255,230,0,0.3)]">
+                <div key={i} className="bg-[#ffc832] border-4 border-[#ffc832] p-6 shadow-[6px_6px_0px_0px_rgba(255,230,0,0.3)]">
                   <div className="font-heading text-3xl font-black text-black">{s.value}</div>
                   <div className="text-xs font-bold text-black uppercase tracking-wide mt-1">{s.label}</div>
                 </div>
@@ -257,14 +257,15 @@ export default function App() {
       {/* Footer */}
       <footer className="border-t-4 border-black bg-black text-white py-8">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="font-heading font-black text-2xl text-[#FFE600] uppercase">HANGAR</span>
+          <span className="font-heading font-black text-2xl text-[#ffc832] uppercase">HANGAR</span>
           <p className="text-sm text-gray-400">Props para producciones publicitarias · Ciudad de México</p>
           <div className="flex gap-6 text-sm font-bold">
-            <Link href="/catalogo" className="text-[#FFE600] hover:underline">Catálogo</Link>
-            <Link href="/mi-cuenta" className="text-[#FFE600] hover:underline">Mi Cuenta</Link>
+            <Link href="/catalogo" className="text-[#ffc832] hover:underline">Catálogo</Link>
+            <Link href="/mi-cuenta" className="text-[#ffc832] hover:underline">Mi Cuenta</Link>
           </div>
         </div>
       </footer>
     </div>
   );
 }
+

@@ -85,7 +85,7 @@ export default function EmailsPage() {
         <div className="grid sm:grid-cols-2 gap-6">
           {DEPARTMENTS.map(dept => (
             <div key={dept} className="card-brutal overflow-hidden">
-              <div className="bg-black text-[#FFE600] px-5 py-3 border-b-4 border-black flex items-center justify-between">
+              <div className="bg-black text-[#ffc832] px-5 py-3 border-b-4 border-black flex items-center justify-between">
                 <h2 className="font-heading font-black uppercase">{dept}</h2>
                 <span className="text-sm font-black">{byDept[dept].length} emails</span>
               </div>
@@ -96,7 +96,7 @@ export default function EmailsPage() {
                     <p className="text-sm text-gray-500 font-medium">Sin emails para {dept}</p>
                   </div>
                 ) : byDept[dept].map(e => (
-                  <div key={e.id} className="flex items-center justify-between px-5 py-3 hover:bg-[#FFE600]/20 transition-colors">
+                  <div key={e.id} className="flex items-center justify-between px-5 py-3 hover:bg-[#ffc832]/20 transition-colors">
                     <div className="flex items-center gap-2">
                       <Mail size={16} className="text-gray-500" />
                       <span className="font-medium text-sm">{e.email}</span>
@@ -122,7 +122,7 @@ export default function EmailsPage() {
           <div className="card-brutal overflow-hidden">
             <table className="w-full">
               <thead>
-                <tr className="bg-black text-[#FFE600]">
+                <tr className="bg-black text-[#ffc832]">
                   <th className="text-left px-4 py-3 text-xs font-black uppercase">Email</th>
                   <th className="text-left px-4 py-3 text-xs font-black uppercase">Departamento</th>
                   <th className="text-center px-4 py-3 text-xs font-black uppercase">Acción</th>
@@ -133,7 +133,7 @@ export default function EmailsPage() {
                   <tr key={e.id} className={`border-b-2 border-black ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
                     <td className="px-4 py-3 font-medium text-sm">{e.email}</td>
                     <td className="px-4 py-3">
-                      <span className="text-xs font-black uppercase bg-[#FFE600] border-2 border-black px-2 py-0.5">{e.department}</span>
+                      <span className="text-xs font-black uppercase bg-[#ffc832] border-2 border-black px-2 py-0.5">{e.department}</span>
                     </td>
                     <td className="px-4 py-3 text-center">
                       <button onClick={() => deleteEmail(e.id)} className="p-1.5 border-2 border-black hover:bg-red-500 hover:text-white transition-colors">
@@ -152,7 +152,7 @@ export default function EmailsPage() {
       {showForm && (
         <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center px-4">
           <div className="card-brutal w-full max-w-md">
-            <div className="flex items-center justify-between p-5 border-b-4 border-black bg-[#FFE600]">
+            <div className="flex items-center justify-between p-5 border-b-4 border-black bg-[#ffc832]">
               <h2 className="font-heading font-black uppercase">Agregar Email BCC</h2>
               <button onClick={() => setShowForm(false)}><X size={20} /></button>
             </div>
@@ -185,3 +185,4 @@ export default function EmailsPage() {
     </div>
   );
 }
+

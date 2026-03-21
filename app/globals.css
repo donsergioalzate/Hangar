@@ -47,7 +47,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-[#FFE600] text-black font-body;
+    @apply bg-[#ffc832] text-black font-body;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading font-black;
@@ -56,10 +56,10 @@
 
 @layer components {
   .btn-brutal {
-    @apply bg-black text-[#FFE600] border-4 border-black px-6 py-3 font-bold uppercase tracking-wide shadow-brutal hover:shadow-brutal-xs hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-100 cursor-pointer;
+    @apply bg-black text-[#ffc832] border-4 border-black px-6 py-3 font-bold uppercase tracking-wide shadow-brutal hover:shadow-brutal-xs hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-100 cursor-pointer;
   }
   .btn-brutal-outline {
-    @apply bg-[#FFE600] text-black border-4 border-black px-6 py-3 font-bold uppercase tracking-wide shadow-brutal hover:shadow-brutal-xs hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-100 cursor-pointer;
+    @apply bg-[#ffc832] text-black border-4 border-black px-6 py-3 font-bold uppercase tracking-wide shadow-brutal hover:shadow-brutal-xs hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-100 cursor-pointer;
   }
   .btn-brutal-white {
     @apply bg-white text-black border-4 border-black px-6 py-3 font-bold uppercase tracking-wide shadow-brutal hover:shadow-brutal-xs hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-100 cursor-pointer;
@@ -68,6 +68,7 @@
     @apply bg-white border-4 border-black shadow-brutal;
   }
   .input-brutal {
-    @apply bg-white border-4 border-black px-4 py-3 font-medium text-black placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-[#FFE600] w-full;
+    @apply bg-white border-4 border-black px-4 py-3 font-medium text-black placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-[#ffc832] w-full;
   }
 }
+

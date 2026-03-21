@@ -48,7 +48,7 @@ export default function CatalogoPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFE600]">
+    <div className="min-h-screen bg-[#ffc832]">
       <Navbar />
 
       {/* Header */}
@@ -109,7 +109,7 @@ export default function CatalogoPage() {
               <div className="space-y-1">
                 <button
                   onClick={() => setSelectedCategory('')}
-                  className={`w-full text-left px-3 py-2 font-bold text-sm uppercase border-2 border-black transition-all ${!selectedCategory ? 'bg-black text-[#FFE600]' : 'bg-white text-black hover:bg-[#FFE600]'}`}
+                  className={`w-full text-left px-3 py-2 font-bold text-sm uppercase border-2 border-black transition-all ${!selectedCategory ? 'bg-black text-[#ffc832]' : 'bg-white text-black hover:bg-[#ffc832]'}`}
                 >
                   Todas
                 </button>
@@ -117,7 +117,7 @@ export default function CatalogoPage() {
                   <button
                     key={cat.id}
                     onClick={() => setSelectedCategory(cat.id)}
-                    className={`w-full text-left px-3 py-2 font-bold text-sm uppercase border-2 border-black transition-all ${selectedCategory === cat.id ? 'bg-black text-[#FFE600]' : 'bg-white text-black hover:bg-[#FFE600]'}`}
+                    className={`w-full text-left px-3 py-2 font-bold text-sm uppercase border-2 border-black transition-all ${selectedCategory === cat.id ? 'bg-black text-[#ffc832]' : 'bg-white text-black hover:bg-[#ffc832]'}`}
                   >
                     {cat.name}
                   </button>
@@ -179,7 +179,7 @@ export default function CatalogoPage() {
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           />
                         ) : (
-                          <div className="w-full h-full bg-[#FFE600] flex items-center justify-center">
+                          <div className="w-full h-full bg-[#ffc832] flex items-center justify-center">
                             <Package size={40} />
                           </div>
                         )}
@@ -206,7 +206,7 @@ export default function CatalogoPage() {
                         </span>
                         <button
                           onClick={() => handleAdd(prop)}
-                          className={`flex items-center gap-1 px-3 py-2 border-2 border-black font-bold text-xs uppercase transition-all shadow-brutal-xs hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] ${addedMap[prop.id] ? 'bg-green-500 text-white border-green-600' : 'bg-black text-[#FFE600]'}`}
+                          className={`flex items-center gap-1 px-3 py-2 border-2 border-black font-bold text-xs uppercase transition-all shadow-brutal-xs hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] ${addedMap[prop.id] ? 'bg-green-500 text-white border-green-600' : 'bg-black text-[#ffc832]'}`}
                         >
                           {addedMap[prop.id] ? '✓ Agregado' : <><ShoppingCart size={14} /> Agregar</>}
                         </button>
@@ -222,3 +222,4 @@ export default function CatalogoPage() {
     </div>
   );
 }
+

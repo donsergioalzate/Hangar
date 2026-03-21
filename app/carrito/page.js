@@ -30,7 +30,7 @@ export default function CarritoPage() {
   const isDateValid = startDate && endDate && new Date(endDate) >= new Date(startDate);
 
   return (
-    <div className="min-h-screen bg-[#FFE600]">
+    <div className="min-h-screen bg-[#ffc832]">
       <Navbar />
 
       {/* Header */}
@@ -111,7 +111,7 @@ export default function CarritoPage() {
                     {item.imageUrl ? (
                       <img src={item.imageUrl} alt={item.propName} className="w-full h-full object-cover" />
                     ) : (
-                      <div className="w-full h-full bg-[#FFE600] flex items-center justify-center">
+                      <div className="w-full h-full bg-[#ffc832] flex items-center justify-center">
                         <Package size={24} />
                       </div>
                     )}
@@ -142,14 +142,14 @@ export default function CarritoPage() {
                       <div className="flex items-center border-2 border-black">
                         <button
                           onClick={() => updateQuantity(item.propId, item.quantity - 1)}
-                          className="px-2 py-1 border-r-2 border-black hover:bg-black hover:text-[#FFE600] transition-colors"
+                          className="px-2 py-1 border-r-2 border-black hover:bg-black hover:text-[#ffc832] transition-colors"
                         >
                           <Minus size={14} />
                         </button>
                         <span className="px-4 py-1 font-black text-sm">{item.quantity}</span>
                         <button
                           onClick={() => updateQuantity(item.propId, item.quantity + 1)}
-                          className="px-2 py-1 border-l-2 border-black hover:bg-black hover:text-[#FFE600] transition-colors"
+                          className="px-2 py-1 border-l-2 border-black hover:bg-black hover:text-[#ffc832] transition-colors"
                         >
                           <Plus size={14} />
                         </button>
@@ -194,7 +194,7 @@ export default function CarritoPage() {
 
                 <Link
                   href="/checkout"
-                  className={`mt-6 w-full flex items-center justify-center gap-2 text-lg py-4 border-4 border-black font-black uppercase transition-all ${isDateValid ? 'bg-black text-[#FFE600] shadow-brutal hover:shadow-brutal-xs hover:translate-x-[4px] hover:translate-y-[4px]' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`}
+                  className={`mt-6 w-full flex items-center justify-center gap-2 text-lg py-4 border-4 border-black font-black uppercase transition-all ${isDateValid ? 'bg-black text-[#ffc832] shadow-brutal hover:shadow-brutal-xs hover:translate-x-[4px] hover:translate-y-[4px]' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`}
                   onClick={e => !isDateValid && e.preventDefault()}
                 >
                   Solicitar Cotización <ArrowRight size={20} />
@@ -215,3 +215,4 @@ export default function CarritoPage() {
     </div>
   );
 }
+

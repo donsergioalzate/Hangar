@@ -227,7 +227,7 @@ export default function CotizacionesPage() {
               </div>
 
               {/* Cards */}
-              <div className="bg-[#FFE600] p-3 space-y-3 flex-1 min-h-[200px]">
+              <div className="bg-[#ffc832] p-3 space-y-3 flex-1 min-h-[200px]">
                 {statusQuotes.length === 0 ? (
                   <div className="border-2 border-dashed border-black p-6 text-center opacity-50">
                     <FileText size={24} className="mx-auto mb-2" />
@@ -268,7 +268,7 @@ export default function CotizacionesPage() {
         <div className="fixed inset-0 z-50 bg-black/60 flex items-start justify-end">
           <div className="bg-white border-l-4 border-black w-full max-w-2xl h-full overflow-y-auto flex flex-col">
             {/* Header */}
-            <div className="sticky top-0 bg-[#FFE600] border-b-4 border-black p-5 flex items-center justify-between z-10">
+            <div className="sticky top-0 bg-[#ffc832] border-b-4 border-black p-5 flex items-center justify-between z-10">
               <div>
                 <h2 className="font-heading font-black text-2xl">{selectedQuote.folio}</h2>
                 <span className={`inline-flex items-center gap-1 text-xs font-black uppercase px-2 py-0.5 border border-black ${STATUS_CONFIG[selectedQuote.status]?.badge}`}>
@@ -309,7 +309,7 @@ export default function CotizacionesPage() {
                 <div className="border-4 border-black overflow-hidden">
                   <table className="w-full text-sm">
                     <thead>
-                      <tr className="bg-black text-[#FFE600]">
+                      <tr className="bg-black text-[#ffc832]">
                         <th className="text-left px-3 py-2 text-xs font-black uppercase">Prop</th>
                         <th className="text-center px-3 py-2 text-xs font-black uppercase">Cant.</th>
                         <th className="text-right px-3 py-2 text-xs font-black uppercase">$/Día</th>
@@ -330,7 +330,7 @@ export default function CotizacionesPage() {
                       ))}
                     </tbody>
                     <tfoot>
-                      <tr className="bg-[#FFE600] border-t-4 border-black">
+                      <tr className="bg-[#ffc832] border-t-4 border-black">
                         <td colSpan={3} className="px-3 py-3 font-black uppercase">TOTAL</td>
                         <td className="px-3 py-3 text-right font-heading font-black text-xl">${selectedQuote.totalCost?.toLocaleString('es-MX')}</td>
                       </tr>
@@ -390,3 +390,4 @@ export default function CotizacionesPage() {
     </div>
   );
 }
+

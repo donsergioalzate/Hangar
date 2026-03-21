@@ -36,7 +36,7 @@ export default function AdminDashboardPage() {
           {/* Stats Grid */}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
             {[
-              { label: 'Total Props', value: stats.totalProps, icon: <Package size={24} />, color: 'bg-[#FFE600]', link: '/dashboard/inventario' },
+              { label: 'Total Props', value: stats.totalProps, icon: <Package size={24} />, color: 'bg-[#ffc832]', link: '/dashboard/inventario' },
               { label: 'Categorías', value: stats.totalCategories, icon: <LayoutGrid size={24} />, color: 'bg-white', link: '/dashboard/inventario' },
               { label: 'Usuarios', value: stats.totalUsers, icon: <Users size={24} />, color: 'bg-white', link: null },
               { label: 'Cotiz. Nuevas', value: stats.newQuotes, icon: <Clock size={24} />, color: 'bg-blue-100', link: '/dashboard/cotizaciones?status=NEW' },
@@ -117,7 +117,7 @@ export default function AdminDashboardPage() {
                   { href: '/catalogo', label: 'Ver catálogo público', icon: <ArrowRight size={18} />, desc: 'Vista previa del sitio público' }
                 ].map((a, i) => (
                   <Link key={i} href={a.href} className="card-brutal p-4 flex items-center gap-4 hover:shadow-brutal-xs hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
-                    <div className="bg-[#FFE600] border-2 border-black p-2 flex-shrink-0 shadow-brutal-xs">
+                    <div className="bg-[#ffc832] border-2 border-black p-2 flex-shrink-0 shadow-brutal-xs">
                       {a.icon}
                     </div>
                     <div>
@@ -138,3 +138,4 @@ export default function AdminDashboardPage() {
     </div>
   );
 }
+

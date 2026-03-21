@@ -90,7 +90,7 @@ export default function MiCuentaPage() {
 
   if (status === 'loading') {
     return (
-      <div className="min-h-screen bg-[#FFE600]">
+      <div className="min-h-screen bg-[#ffc832]">
         <Navbar />
         <div className="max-w-7xl mx-auto px-4 py-16 text-center">
           <div className="font-heading text-2xl font-black animate-pulse">Cargando...</div>
@@ -102,7 +102,7 @@ export default function MiCuentaPage() {
   // If logged in, show profile
   if (session) {
     return (
-      <div className="min-h-screen bg-[#FFE600]">
+      <div className="min-h-screen bg-[#ffc832]">
         <Navbar />
 
         <div className="border-b-4 border-black bg-white px-4 py-8">
@@ -113,7 +113,7 @@ export default function MiCuentaPage() {
             </div>
             <button
               onClick={() => signOut({ callbackUrl: '/' })}
-              className="flex items-center gap-2 bg-black text-[#FFE600] border-4 border-black px-4 py-2 font-bold uppercase text-sm shadow-brutal hover:shadow-brutal-xs hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+              className="flex items-center gap-2 bg-black text-[#ffc832] border-4 border-black px-4 py-2 font-bold uppercase text-sm shadow-brutal hover:shadow-brutal-xs hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
             >
               <LogOut size={16} /> Salir
             </button>
@@ -127,14 +127,14 @@ export default function MiCuentaPage() {
             <div className="space-y-4">
               <div className="card-brutal p-6">
                 <div className="w-16 h-16 bg-black border-4 border-black flex items-center justify-center mb-4 shadow-brutal-sm">
-                  <User size={28} className="text-[#FFE600]" />
+                  <User size={28} className="text-[#ffc832]" />
                 </div>
                 <h2 className="font-heading font-black text-xl uppercase mb-1">{session.user.name}</h2>
                 <p className="text-sm text-gray-600 mb-1">{session.user.email}</p>
                 {session.user.phone && <p className="text-sm text-gray-600 mb-1">{session.user.phone}</p>}
                 {session.user.productionCompany && <p className="text-sm text-gray-600">{session.user.productionCompany}</p>}
                 <div className="mt-4 pt-4 border-t-2 border-black">
-                  <span className={`text-xs font-black uppercase px-2 py-1 border-2 border-black ${session.user.role === 'ADMIN' ? 'bg-[#FFE600]' : 'bg-gray-100'}`}>
+                  <span className={`text-xs font-black uppercase px-2 py-1 border-2 border-black ${session.user.role === 'ADMIN' ? 'bg-[#ffc832]' : 'bg-gray-100'}`}>
                     {session.user.role}
                   </span>
                 </div>
@@ -197,7 +197,7 @@ export default function MiCuentaPage() {
 
   // Login/Register forms
   return (
-    <div className="min-h-screen bg-[#FFE600]">
+    <div className="min-h-screen bg-[#ffc832]">
       <Navbar />
 
       <div className="max-w-lg mx-auto px-4 py-16">
@@ -212,13 +212,13 @@ export default function MiCuentaPage() {
         <div className="flex border-4 border-black mb-0 shadow-brutal">
           <button
             onClick={() => { setTab('login'); setError(''); }}
-            className={`flex-1 py-3 font-black uppercase text-sm border-r-2 border-black transition-colors ${tab === 'login' ? 'bg-black text-[#FFE600]' : 'bg-[#FFE600] text-black hover:bg-white'}`}
+            className={`flex-1 py-3 font-black uppercase text-sm border-r-2 border-black transition-colors ${tab === 'login' ? 'bg-black text-[#ffc832]' : 'bg-[#ffc832] text-black hover:bg-white'}`}
           >
             Iniciar Sesión
           </button>
           <button
             onClick={() => { setTab('register'); setError(''); }}
-            className={`flex-1 py-3 font-black uppercase text-sm transition-colors ${tab === 'register' ? 'bg-black text-[#FFE600]' : 'bg-[#FFE600] text-black hover:bg-white'}`}
+            className={`flex-1 py-3 font-black uppercase text-sm transition-colors ${tab === 'register' ? 'bg-black text-[#ffc832]' : 'bg-[#ffc832] text-black hover:bg-white'}`}
           >
             Crear Cuenta
           </button>
@@ -311,3 +311,4 @@ export default function MiCuentaPage() {
     </div>
   );
 }
+

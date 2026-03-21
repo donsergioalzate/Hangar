@@ -69,7 +69,7 @@ export default function PropDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#FFE600]">
+      <div className="min-h-screen bg-[#ffc832]">
         <Navbar />
         <div className="max-w-7xl mx-auto px-4 py-16 text-center">
           <div className="font-heading text-2xl font-black animate-pulse">Cargando...</div>
@@ -80,7 +80,7 @@ export default function PropDetailPage() {
 
   if (!prop || prop.error) {
     return (
-      <div className="min-h-screen bg-[#FFE600]">
+      <div className="min-h-screen bg-[#ffc832]">
         <Navbar />
         <div className="max-w-7xl mx-auto px-4 py-16 text-center">
           <h1 className="font-heading text-4xl font-black mb-4">Prop no encontrado</h1>
@@ -96,7 +96,7 @@ export default function PropDetailPage() {
   const currentImg = images[currentImage];
 
   return (
-    <div className="min-h-screen bg-[#FFE600]">
+    <div className="min-h-screen bg-[#ffc832]">
       <Navbar />
 
       {/* Breadcrumb */}
@@ -131,7 +131,7 @@ export default function PropDetailPage() {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="w-full h-full bg-[#FFE600] flex items-center justify-center">
+                  <div className="w-full h-full bg-[#ffc832] flex items-center justify-center">
                     <Package size={60} />
                   </div>
                 )}
@@ -142,14 +142,14 @@ export default function PropDetailPage() {
                   <button
                     onClick={() => setCurrentImage(i => Math.max(0, i - 1))}
                     disabled={currentImage === 0}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 bg-[#FFE600] border-2 border-black p-2 shadow-brutal-xs disabled:opacity-30 hover:bg-black hover:text-[#FFE600] transition-colors"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 bg-[#ffc832] border-2 border-black p-2 shadow-brutal-xs disabled:opacity-30 hover:bg-black hover:text-[#ffc832] transition-colors"
                   >
                     <ChevronLeft size={20} />
                   </button>
                   <button
                     onClick={() => setCurrentImage(i => Math.min(images.length - 1, i + 1))}
                     disabled={currentImage === images.length - 1}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 bg-[#FFE600] border-2 border-black p-2 shadow-brutal-xs disabled:opacity-30 hover:bg-black hover:text-[#FFE600] transition-colors"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 bg-[#ffc832] border-2 border-black p-2 shadow-brutal-xs disabled:opacity-30 hover:bg-black hover:text-[#ffc832] transition-colors"
                   >
                     <ChevronRight size={20} />
                   </button>
@@ -157,7 +157,7 @@ export default function PropDetailPage() {
               )}
               {/* Image counter */}
               {images.length > 1 && (
-                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black text-[#FFE600] text-xs font-black px-3 py-1 border-2 border-[#FFE600]">
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black text-[#ffc832] text-xs font-black px-3 py-1 border-2 border-[#ffc832]">
                   {currentImage + 1} / {images.length}
                 </div>
               )}
@@ -210,7 +210,7 @@ export default function PropDetailPage() {
             )}
 
             {category && (
-              <div className="inline-block bg-[#FFE600] border-2 border-black px-3 py-1 text-xs font-black uppercase">
+              <div className="inline-block bg-[#ffc832] border-2 border-black px-3 py-1 text-xs font-black uppercase">
                 {category.name}
               </div>
             )}
@@ -246,7 +246,7 @@ export default function PropDetailPage() {
             {/* Add to cart */}
             <button
               onClick={handleAdd}
-              className={`w-full flex items-center justify-center gap-3 text-lg py-4 border-4 border-black font-black uppercase shadow-brutal hover:shadow-brutal-xs hover:translate-x-[4px] hover:translate-y-[4px] transition-all ${added ? 'bg-green-500 text-white border-green-600' : 'bg-black text-[#FFE600]'}`}
+              className={`w-full flex items-center justify-center gap-3 text-lg py-4 border-4 border-black font-black uppercase shadow-brutal hover:shadow-brutal-xs hover:translate-x-[4px] hover:translate-y-[4px] transition-all ${added ? 'bg-green-500 text-white border-green-600' : 'bg-black text-[#ffc832]'}`}
             >
               {added ? (
                 <>✓ Agregado al Carrito</>
@@ -269,3 +269,4 @@ export default function PropDetailPage() {
     </div>
   );
 }
+
