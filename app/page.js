@@ -1,6 +1,7 @@
 ﻿'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import { ArrowRight, Package, Clock, Star, ChevronRight } from 'lucide-react';
 
@@ -257,7 +258,23 @@ export default function App() {
       {/* Footer */}
       <footer className="border-t-4 border-black bg-black text-white py-8">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="font-heading font-black text-2xl text-[#ffc832] uppercase">HANGAR</span>
+          <div className="flex items-center">
+            <span className="sr-only">HANGAR</span>
+            <Image
+              src="/assets/logos/Hangar-logo-amarillo.png"
+              alt="HANGAR"
+              width={180}
+              height={48}
+              className="hidden sm:block h-10 w-auto"
+            />
+            <Image
+              src="/assets/logos/amarillo-vert.png"
+              alt="HANGAR"
+              width={64}
+              height={64}
+              className="block sm:hidden h-10 w-auto"
+            />
+          </div>
           <p className="text-sm text-gray-400">Props para producciones publicitarias · Perú</p>
           <div className="flex gap-6 text-sm font-bold">
             <Link href="/catalogo" className="text-[#ffc832] hover:underline">Catálogo</Link>

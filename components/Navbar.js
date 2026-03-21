@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useSession, signOut } from 'next-auth/react';
 import { useCart } from './CartContext';
 import { ShoppingCart, User, Menu, X } from 'lucide-react';
@@ -11,11 +12,27 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#ffc832] border-b-4 border-black">
+    <nav className="sticky top-0 z-50 bg-white border-b-4 border-black">
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
         {/* Logo */}
-        <Link href="/" className="font-black text-2xl tracking-tighter text-black uppercase hover:opacity-80 transition-opacity">
-          HANGAR
+        <Link href="/" className="hover:opacity-80 transition-opacity">
+          <span className="sr-only">HANGAR</span>
+          <Image
+            src="/assets/logos/Hangar-logo-amarillo.png"
+            alt="HANGAR"
+            width={180}
+            height={48}
+            className="hidden sm:block h-10 w-auto"
+            priority
+          />
+          <Image
+            src="/assets/logos/amarillo-vert.png"
+            alt="HANGAR"
+            width={64}
+            height={64}
+            className="block sm:hidden h-10 w-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -66,7 +83,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden border-t-4 border-black bg-[#ffc832] px-4 py-4 flex flex-col gap-4">
+        <div className="md:hidden border-t-4 border-black bg-white px-4 py-4 flex flex-col gap-4">
           <Link href="/" onClick={() => setMenuOpen(false)} className="font-bold text-black uppercase text-sm">Inicio</Link>
           <Link href="/catalogo" onClick={() => setMenuOpen(false)} className="font-bold text-black uppercase text-sm">Catálogo</Link>
           <Link href="/#sobre-nosotros" onClick={() => setMenuOpen(false)} className="font-bold text-black uppercase text-sm">Nosotros</Link>

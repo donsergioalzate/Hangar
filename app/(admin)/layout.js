@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
 import { LayoutGrid, Package, FileText, Mail, LogOut, ChevronRight, Home } from 'lucide-react';
@@ -21,8 +22,24 @@ export default function AdminLayout({ children }) {
       <aside className="w-64 flex-shrink-0 bg-black border-r-4 border-[#ffc832] flex flex-col min-h-screen sticky top-0 h-screen">
         {/* Logo */}
         <div className="border-b-4 border-[#ffc832] p-6">
-          <Link href="/" className="font-heading font-black text-2xl text-[#ffc832] uppercase tracking-tighter">
-            HANGAR
+          <Link href="/" className="inline-flex items-center">
+            <span className="sr-only">HANGAR</span>
+            <Image
+              src="/assets/logos/Hangar-logo-amarillo.png"
+              alt="HANGAR"
+              width={180}
+              height={48}
+              className="hidden sm:block h-9 w-auto"
+              priority
+            />
+            <Image
+              src="/assets/logos/amarillo-vert.png"
+              alt="HANGAR"
+              width={64}
+              height={64}
+              className="block sm:hidden h-10 w-auto"
+              priority
+            />
           </Link>
           <p className="text-xs text-yellow-400 mt-1 font-bold uppercase">Panel Admin</p>
         </div>
