@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
@@ -258,7 +258,7 @@ export default function App() {
       <footer className="border-t-4 border-black bg-black text-white py-8">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
           <span className="font-heading font-black text-2xl text-[#ffc832] uppercase">HANGAR</span>
-          <p className="text-sm text-gray-400">Props para producciones publicitarias · Ciudad de México</p>
+          <p className="text-sm text-gray-400">Props para producciones publicitarias · Perú</p>
           <div className="flex gap-6 text-sm font-bold">
             <Link href="/catalogo" className="text-[#ffc832] hover:underline">Catálogo</Link>
             <Link href="/mi-cuenta" className="text-[#ffc832] hover:underline">Mi Cuenta</Link>
@@ -268,4 +268,5 @@ export default function App() {
     </div>
   );
 }
+
 

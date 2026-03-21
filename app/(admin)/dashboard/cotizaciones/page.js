@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import { useEffect, useState, useCallback } from 'react';
 import { Clock, CheckCircle, RotateCcw, FileText, ChevronDown, X, Download, Package, Calendar, User } from 'lucide-react';
 
@@ -176,7 +176,7 @@ export default function CotizacionesPage() {
       // Footer
       doc.setFontSize(8);
       doc.setTextColor(100);
-      doc.text('HANGAR · Props para Producción Publicitaria · Ciudad de México', pageW / 2, 287, { align: 'center' });
+      doc.text('HANGAR · Props para Producción Publicitaria · Perú', pageW / 2, 287, { align: 'center' });
 
       doc.save(`cotizacion-${quote.folio}.pdf`);
     } catch (e) {
@@ -390,4 +390,5 @@ export default function CotizacionesPage() {
     </div>
   );
 }
+
 
