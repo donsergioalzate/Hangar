@@ -189,7 +189,7 @@ export default function CarritoPage() {
                     <span className="font-black uppercase">TOTAL</span>
                     <span className="font-heading text-3xl font-black">${isDateValid ? totalCost.toLocaleString('es-MX') : '—'}</span>
                   </div>
-                  <p className="text-xs text-gray-500">MXN · Precio sujeto a disponibilidad</p>
+                  <p className="text-xs text-gray-500">SOLES · Precio sujeto a disponibilidad</p>
                 </div>
 
                 <Link

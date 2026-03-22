@@ -12,7 +12,7 @@ export default function CheckoutPage() {
   const router = useRouter();
   const { items, startDate, endDate, totalDays, totalCost, clearCart, initialized } = useCart();
 
-  const [form, setForm] = useState({ name: '', email: '', phone: '', productionCompany: '', notes: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', productionCompany: '', projectName: '', notes: '' });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(null);
   const [error, setError] = useState('');
@@ -122,7 +122,7 @@ export default function CheckoutPage() {
             dimensions: item.dimensions, pricePerDay: item.pricePerDay, quantity: item.quantity
           })),
           userName: form.name, userEmail: form.email,
-          userPhone: form.phone, userProductionCompany: form.productionCompany
+          userPhone: form.phone, userProductionCompany: form.productionCompany, userProjectName: form.projectName
         })
       });
       const data = await res.json();
@@ -203,6 +203,15 @@ export default function CheckoutPage() {
                     placeholder="Nombre de la empresa"
                   />
                 </div>
+                <div>
+                  <label className="text-xs font-black uppercase block mb-2">Nombre del Proyecto</label>
+                  <input
+                    type="text" value={form.projectName}
+                    onChange={e => setForm(p => ({ ...p, projectName: e.target.value }))}
+                    className="input-brutal"
+                    placeholder="Nombre del proyecto"
+                  />
+                </div>
               </div>
             </div>
 
@@ -262,7 +271,7 @@ export default function CheckoutPage() {
                   <span className="font-black uppercase text-lg">TOTAL ESTIMADO</span>
                   <span className="font-heading text-3xl font-black">${totalCost.toLocaleString('es-MX')}</span>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">MXN · El precio final será confirmado por nuestro equipo</p>
+                <p className="text-xs text-gray-500 mt-1">SOLES · El precio final será confirmado por nuestro equipo</p>
               </div>
             </div>
 

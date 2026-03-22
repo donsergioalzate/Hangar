@@ -253,7 +253,7 @@ async function handleCreateQuote(req) {
   const session = await getServerSession(authOptions);
   if (!session) return err('Debes iniciar sesión para crear una cotización', 401);
   const body = await req.json();
-  const { startDate, endDate, notes, items, userName, userEmail, userPhone, userProductionCompany } = body;
+  const { startDate, endDate, notes, items, userName, userEmail, userPhone, userProductionCompany, userProjectName } = body;
   if (!startDate || !endDate) return err('Fechas de inicio y fin son requeridas');
   if (!items || items.length === 0) return err('El carrito está vacío');
   const db = await getDatabase();
@@ -268,6 +268,7 @@ async function handleCreateQuote(req) {
     userName: userName || session.user.name,
     userPhone: userPhone || session.user.phone || '',
     userProductionCompany: userProductionCompany || session.user.productionCompany || '',
+    projectName: userProjectName || '',
     startDate: new Date(startDate),
     endDate: new Date(endDate),
     totalDays,
