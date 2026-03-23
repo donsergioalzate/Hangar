@@ -94,6 +94,7 @@ export default function CotizacionesPage() {
       doc.text(`${quote.userEmail}`, margin + 4, y + 22);
       doc.text(`${quote.userPhone || '—'}`, margin + 4, y + 29);
       doc.text(`Empresa: ${quote.userProductionCompany || '—'}`, pageW / 2, y + 15);
+      doc.text(`Proyecto: ${quote.projectName || '—'}`, pageW / 2, y + 22);
 
       y += 40;
 
@@ -244,7 +245,7 @@ export default function CotizacionesPage() {
                       {updating === quote.id && <span className="text-xs text-gray-500 animate-pulse">...</span>}
                     </div>
                     <p className="font-bold text-sm">{quote.userName}</p>
-                    <p className="text-xs text-gray-500 mb-2">{quote.userProductionCompany}</p>
+                    <p className="text-xs text-gray-500 mb-2">{quote.userProductionCompany || '—'}{quote.projectName ? ` · ${quote.projectName}` : ''}</p>
                     <div className="flex items-center justify-between text-xs">
                       <span className="flex items-center gap-1 text-gray-600">
                         <Calendar size={12} />
@@ -290,6 +291,7 @@ export default function CotizacionesPage() {
                   <div><p className="text-xs text-gray-500">Empresa</p><p className="font-bold">{selectedQuote.userProductionCompany || '—'}</p></div>
                   <div><p className="text-xs text-gray-500">Email</p><p className="font-bold text-xs">{selectedQuote.userEmail}</p></div>
                   <div><p className="text-xs text-gray-500">Teléfono</p><p className="font-bold">{selectedQuote.userPhone || '—'}</p></div>
+                  <div className="col-span-2"><p className="text-xs text-gray-500">Proyecto</p><p className="font-bold">{selectedQuote.projectName || '—'}</p></div>
                 </div>
               </div>
 

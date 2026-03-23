@@ -91,7 +91,7 @@ export default function AdminDashboardPage() {
                       <Link key={q.id} href="/dashboard/cotizaciones" className="card-brutal p-4 flex items-center justify-between hover:shadow-brutal-xs hover:translate-x-[2px] hover:translate-y-[2px] transition-all block">
                         <div>
                           <p className="font-heading font-black">{q.folio}</p>
-                          <p className="text-xs text-gray-500">{q.userName} · {q.userProductionCompany}</p>
+                          <p className="text-xs text-gray-500">{q.userName} · {q.userProductionCompany || '—'}{q.projectName ? ` · ${q.projectName}` : ''}</p>
                         </div>
                         <div className="flex items-center gap-3">
                           <span className="font-black text-sm">S/ {q.totalCost?.toLocaleString('es-PE')}</span>
