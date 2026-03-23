@@ -201,7 +201,7 @@ export default function CatalogoPage() {
                       <p className="text-xs text-gray-500 mb-3">{prop.dimensions}</p>
                       <div className="mt-auto flex items-center justify-between gap-2">
                         <span className="font-black text-lg">
-                          ${prop.pricePerDay?.toLocaleString('es-MX')}
+                          S/ {prop.pricePerDay?.toLocaleString('es-PE')}
                           <span className="text-xs font-normal text-gray-500">/día</span>
                         </span>
                         <button

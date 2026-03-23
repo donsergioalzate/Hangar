@@ -259,8 +259,8 @@ export default function CheckoutPage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-bold text-xs uppercase truncate">{item.propName}</p>
-                      <p className="text-xs text-gray-500">×{item.quantity} · ${item.pricePerDay?.toLocaleString()}/día</p>
-                      <p className="text-xs font-black">${(item.pricePerDay * item.quantity * totalDays).toLocaleString('es-MX')}</p>
+                      <p className="text-xs text-gray-500">×{item.quantity} · S/ {item.pricePerDay?.toLocaleString('es-PE')}/día</p>
+                      <p className="text-xs font-black">S/ {(item.pricePerDay * item.quantity * totalDays).toLocaleString('es-PE')}</p>
                     </div>
                   </div>
                 ))}
@@ -269,7 +269,7 @@ export default function CheckoutPage() {
               <div className="border-t-4 border-black pt-4">
                 <div className="flex items-baseline justify-between">
                   <span className="font-black uppercase text-lg">TOTAL ESTIMADO</span>
-                  <span className="font-heading text-3xl font-black">${totalCost.toLocaleString('es-MX')}</span>
+                  <span className="font-heading text-3xl font-black">S/ {totalCost.toLocaleString('es-PE')}</span>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">SOLES · El precio final será confirmado por nuestro equipo</p>
               </div>

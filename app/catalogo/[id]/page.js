@@ -236,7 +236,7 @@ export default function PropDetailPage() {
             {/* Price */}
             <div className="flex items-baseline gap-3">
               <span className="font-heading text-5xl font-black text-black">
-                ${prop.pricePerDay?.toLocaleString('es-MX')}
+                S/ {prop.pricePerDay?.toLocaleString('es-PE')}
               </span>
               <span className="text-xl font-medium text-gray-500">/ día</span>
             </div>

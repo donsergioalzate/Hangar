@@ -176,7 +176,7 @@ export default function InventarioPage() {
                   <tr className="bg-black text-[#ffc832]">
                     <th className="text-left px-4 py-3 font-black uppercase text-xs border-r-2 border-[#ffc832]">Prop</th>
                     <th className="text-left px-4 py-3 font-black uppercase text-xs border-r-2 border-[#ffc832] hidden md:table-cell">Categoría</th>
-                    <th className="text-right px-4 py-3 font-black uppercase text-xs border-r-2 border-[#ffc832]">$/Día</th>
+                    <th className="text-right px-4 py-3 font-black uppercase text-xs border-r-2 border-[#ffc832]">S/ / Día</th>
                     <th className="text-center px-4 py-3 font-black uppercase text-xs border-r-2 border-[#ffc832]">Stock</th>
                     <th className="text-center px-4 py-3 font-black uppercase text-xs">Acciones</th>
                   </tr>
@@ -198,7 +198,7 @@ export default function InventarioPage() {
                         </div>
                       </td>
                       <td className="px-4 py-3 border-r-2 border-black text-sm hidden md:table-cell">{getCatName(prop.categoryId)}</td>
-                      <td className="px-4 py-3 border-r-2 border-black text-right font-black">${prop.pricePerDay?.toLocaleString('es-MX')}</td>
+                      <td className="px-4 py-3 border-r-2 border-black text-right font-black">S/ {prop.pricePerDay?.toLocaleString('es-PE')}</td>
                       <td className="px-4 py-3 border-r-2 border-black text-center">
                         <button
                           onClick={() => toggleStock(prop)}
@@ -264,7 +264,7 @@ export default function InventarioPage() {
                   <input required value={propForm.name} onChange={e => setPropForm(p => ({ ...p, name: e.target.value }))} className="input-brutal" placeholder="Nombre del prop" />
                 </div>
                 <div>
-                  <label className="text-xs font-black uppercase block mb-1">Precio por Día (MXN) *</label>
+                  <label className="text-xs font-black uppercase block mb-1">Precio por Día (SOLES) *</label>
                   <input required type="number" min="0" value={propForm.pricePerDay} onChange={e => setPropForm(p => ({ ...p, pricePerDay: e.target.value }))} className="input-brutal" placeholder="1200" />
                 </div>
                 <div>

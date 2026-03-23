@@ -157,8 +157,8 @@ export default function CarritoPage() {
 
                       {/* Price */}
                       <div className="text-right">
-                        <p className="text-xs text-gray-500">${item.pricePerDay?.toLocaleString('es-MX')}/día × {item.quantity} × {totalDays}d</p>
-                        <p className="font-black text-lg">${(item.pricePerDay * item.quantity * totalDays).toLocaleString('es-MX')}</p>
+                        <p className="text-xs text-gray-500">S/ {item.pricePerDay?.toLocaleString('es-PE')}/día × {item.quantity} × {totalDays}d</p>
+                        <p className="font-black text-lg">S/ {(item.pricePerDay * item.quantity * totalDays).toLocaleString('es-PE')}</p>
                       </div>
                     </div>
                   </div>
@@ -175,7 +175,7 @@ export default function CarritoPage() {
                   {items.map(item => (
                     <div key={item.propId} className="flex justify-between text-sm">
                       <span className="text-gray-600 truncate flex-1 mr-2">{item.propName} ×{item.quantity}</span>
-                      <span className="font-bold flex-shrink-0">${(item.pricePerDay * item.quantity * totalDays).toLocaleString('es-MX')}</span>
+                      <span className="font-bold flex-shrink-0">S/ {(item.pricePerDay * item.quantity * totalDays).toLocaleString('es-PE')}</span>
                     </div>
                   ))}
                 </div>
@@ -187,7 +187,7 @@ export default function CarritoPage() {
                   </div>
                   <div className="flex justify-between items-baseline">
                     <span className="font-black uppercase">TOTAL</span>
-                    <span className="font-heading text-3xl font-black">${isDateValid ? totalCost.toLocaleString('es-MX') : '—'}</span>
+                    <span className="font-heading text-3xl font-black">S/ {isDateValid ? totalCost.toLocaleString('es-PE') : '—'}</span>
                   </div>
                   <p className="text-xs text-gray-500">SOLES · Precio sujeto a disponibilidad</p>
                 </div>

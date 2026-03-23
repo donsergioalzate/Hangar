@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import { useEffect, useState, useCallback } from 'react';
 import { Clock, CheckCircle, RotateCcw, FileText, ChevronDown, X, Download, Package, Calendar, User } from 'lucide-react';
 
@@ -117,9 +117,9 @@ export default function CotizacionesPage() {
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(8);
       const colWidths = [65, 30, 25, 20, 30];
-      const cols = ['PROP', 'DIMENSIONES', 'CANT.', 'DÍAS', '$/DÍA', 'SUBTOTAL'];
+      const cols = ['PROP', 'DIMENSIONES', 'CANT.', 'DÍAS', 'SOLES/DÍA', 'SUBTOTAL'];
       let x = margin + 2;
-      ['PROP', 'DIMENSIONES', 'CANT.', 'DÍAS', '$/DÍA', 'SUBTOTAL'].forEach((col, i) => {
+      ['PROP', 'DIMENSIONES', 'CANT.', 'DÍAS', 'SOLES/DÍA', 'SUBTOTAL'].forEach((col, i) => {
         doc.text(col, x, y + 6);
         x += [60, 30, 18, 18, 22, 22][i];
       });
@@ -143,8 +143,8 @@ export default function CotizacionesPage() {
         doc.text(String(item.propDimensions || '').substring(0, 18), cx, y + 6); cx += 30;
         doc.text(String(item.quantity || 1), cx, y + 6); cx += 18;
         doc.text(String(quote.totalDays), cx, y + 6); cx += 18;
-        doc.text(`$${Number(item.pricePerDay).toLocaleString('es-MX')}`, cx, y + 6); cx += 22;
-        doc.text(`$${Number(item.subtotal).toLocaleString('es-MX')}`, cx, y + 6);
+        doc.text(`S/ ${Number(item.pricePerDay).toLocaleString('es-PE')}`, cx, y + 6); cx += 22;
+        doc.text(`S/ ${Number(item.subtotal).toLocaleString('es-PE')}`, cx, y + 6);
         y += rowH;
       });
 
@@ -160,7 +160,7 @@ export default function CotizacionesPage() {
       doc.setTextColor(0);
       doc.text('TOTAL:', pageW - margin - 56, y + 9);
       doc.setFontSize(13);
-      doc.text(`$${Number(quote.totalCost).toLocaleString('es-MX')}`, pageW - margin - 3, y + 9, { align: 'right' });
+      doc.text(`S/ ${Number(quote.totalCost).toLocaleString('es-PE')}`, pageW - margin - 3, y + 9, { align: 'right' });
 
       // Notes
       if (quote.notes) {
@@ -250,7 +250,7 @@ export default function CotizacionesPage() {
                         <Calendar size={12} />
                         {new Date(quote.startDate).toLocaleDateString('es-MX', { day: '2-digit', month: 'short' })}
                       </span>
-                      <span className="font-black">${quote.totalCost?.toLocaleString('es-MX')}</span>
+                      <span className="font-black">S/ {quote.totalCost?.toLocaleString('es-PE')}</span>
                     </div>
                     <div className="flex items-center gap-1 mt-2 text-xs text-gray-500">
                       <Package size={12} /> {quote.items?.length} props · {quote.totalDays} días
@@ -312,7 +312,7 @@ export default function CotizacionesPage() {
                       <tr className="bg-black text-[#ffc832]">
                         <th className="text-left px-3 py-2 text-xs font-black uppercase">Prop</th>
                         <th className="text-center px-3 py-2 text-xs font-black uppercase">Cant.</th>
-                        <th className="text-right px-3 py-2 text-xs font-black uppercase">$/Día</th>
+                        <th className="text-right px-3 py-2 text-xs font-black uppercase">S/ / Día</th>
                         <th className="text-right px-3 py-2 text-xs font-black uppercase">Total</th>
                       </tr>
                     </thead>
@@ -324,15 +324,15 @@ export default function CotizacionesPage() {
                             {item.propDimensions && <p className="text-xs text-gray-500">{item.propDimensions}</p>}
                           </td>
                           <td className="px-3 py-2 text-center font-bold">{item.quantity}</td>
-                          <td className="px-3 py-2 text-right">${item.pricePerDay?.toLocaleString('es-MX')}</td>
-                          <td className="px-3 py-2 text-right font-black">${item.subtotal?.toLocaleString('es-MX')}</td>
+                          <td className="px-3 py-2 text-right">S/ {item.pricePerDay?.toLocaleString('es-PE')}</td>
+                          <td className="px-3 py-2 text-right font-black">S/ {item.subtotal?.toLocaleString('es-PE')}</td>
                         </tr>
                       ))}
                     </tbody>
                     <tfoot>
                       <tr className="bg-[#ffc832] border-t-4 border-black">
                         <td colSpan={3} className="px-3 py-3 font-black uppercase">TOTAL</td>
-                        <td className="px-3 py-3 text-right font-heading font-black text-xl">${selectedQuote.totalCost?.toLocaleString('es-MX')}</td>
+                        <td className="px-3 py-3 text-right font-heading font-black text-xl">S/ {selectedQuote.totalCost?.toLocaleString('es-PE')}</td>
                       </tr>
                     </tfoot>
                   </table>

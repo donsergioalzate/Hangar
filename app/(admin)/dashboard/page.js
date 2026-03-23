@@ -94,7 +94,7 @@ export default function AdminDashboardPage() {
                           <p className="text-xs text-gray-500">{q.userName} · {q.userProductionCompany}</p>
                         </div>
                         <div className="flex items-center gap-3">
-                          <span className="font-black text-sm">${q.totalCost?.toLocaleString('es-MX')}</span>
+                          <span className="font-black text-sm">S/ {q.totalCost?.toLocaleString('es-PE')}</span>
                           <span className={`flex items-center gap-1 text-xs font-black uppercase px-2 py-1 border border-black ${st.color}`}>
                             {st.icon} {st.label}
                           </span>

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -176,7 +176,7 @@ export default function App() {
                     <h3 className="font-heading font-black text-sm uppercase mb-1 line-clamp-2">{prop.name}</h3>
                     <p className="text-xs text-gray-600 mb-3">{prop.dimensions}</p>
                     <div className="flex items-center justify-between">
-                      <span className="font-black text-lg">${prop.pricePerDay?.toLocaleString('es-MX')}<span className="text-xs font-normal text-gray-500">/día</span></span>
+                      <span className="font-black text-lg">S/ {prop.pricePerDay?.toLocaleString('es-PE')}<span className="text-xs font-normal text-gray-500">/día</span></span>
                       <span className="bg-black text-[#ffc832] text-xs font-bold px-2 py-1">VER</span>
                     </div>
                   </div>
