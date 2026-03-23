@@ -88,6 +88,13 @@ export default function MiCuentaPage() {
     }
   };
 
+  const formatDate = (value) => {
+    if (!value) return 'â€”';
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return 'â€”';
+    return date.toLocaleDateString('es-MX', { year: 'numeric', month: 'short', day: '2-digit' });
+  };
+
   if (status === 'loading') {
     return (
       <div className="min-h-screen bg-[#ffc832]">
@@ -188,6 +195,64 @@ export default function MiCuentaPage() {
                   })}
                 </div>
               )}
+
+              {!quotesLoading && (() => {
+                const rentedItems = quotes
+                  .filter(q => q.status === 'CONFIRMED' || q.status === 'RETURNED')
+                  .flatMap(q => (q.items || []).map(item => ({
+                    id: `${q.id}-${item.propId}`,
+                    folio: q.folio,
+                    status: q.status,
+                    confirmedAt: q.confirmedAt,
+                    returnedAt: q.returnedAt,
+                    item
+                  })));
+
+                if (rentedItems.length === 0) return null;
+
+                return (
+                  <div className="mt-10">
+                    <h3 className="font-heading text-xl font-black uppercase mb-4">Historial de Piezas Alquiladas</h3>
+                    <div className="border-4 border-black bg-white overflow-x-auto">
+                      <table className="min-w-[760px] w-full text-sm">
+                        <thead>
+                          <tr className="bg-black text-[#ffc832]">
+                            <th className="text-left px-3 py-2 text-xs font-black uppercase">Pieza</th>
+                            <th className="text-left px-3 py-2 text-xs font-black uppercase">Fecha de confirmaciÃ³n</th>
+                            <th className="text-left px-3 py-2 text-xs font-black uppercase">Fecha de devoluciÃ³n</th>
+                            <th className="text-left px-3 py-2 text-xs font-black uppercase">Estado</th>
+                            <th className="text-center px-3 py-2 text-xs font-black uppercase">Cantidad</th>
+                            <th className="text-right px-3 py-2 text-xs font-black uppercase">Precio</th>
+                            <th className="text-right px-3 py-2 text-xs font-black uppercase">Código</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {rentedItems.map((row, i) => {
+                            const st = STATUS_MAP[row.status] || STATUS_MAP.NEW;
+                            return (
+                              <tr key={row.id} className={`border-b border-gray-200 ${i % 2 ? 'bg-gray-50' : 'bg-white'}`}>
+                                <td className="px-3 py-2">
+                                  <p className="font-bold">{row.item.propName}</p>
+                                </td>
+                                <td className="px-3 py-2">{formatDate(row.confirmedAt)}</td>
+                                <td className="px-3 py-2">{formatDate(row.returnedAt)}</td>
+                                <td className="px-3 py-2">
+                                  <span className={`inline-flex items-center gap-1 px-2 py-0.5 border-2 border-black text-[10px] font-black uppercase ${st.color}`}>
+                                    {st.icon} {st.label}
+                                  </span>
+                                </td>
+                                <td className="px-3 py-2 text-center font-bold">{row.item.quantity}</td>
+                                <td className="px-3 py-2 text-right font-black">S/ {Number(row.item.subtotal || 0).toLocaleString('es-PE')}</td>
+                                <td className="px-3 py-2 text-right font-bold">{row.folio}</td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                );
+              })()}
             </div>
           </div>
         </div>

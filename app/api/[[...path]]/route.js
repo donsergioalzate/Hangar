@@ -307,7 +307,19 @@ async function handleUpdateQuote(req, id) {
   const body = await req.json();
   const db = await getDatabase();
   const update = {};
-  if (body.status) update.status = body.status;
+  if (body.status) {
+    const current = await db.collection('quotes').findOne({ id }, { projection: { confirmedAt: 1, returnedAt: 1 } });
+    update.status = body.status;
+    if (body.status === 'CONFIRMED') {
+      if (!current?.confirmedAt) update.confirmedAt = new Date();
+    } else if (body.status === 'RETURNED') {
+      if (!current?.returnedAt) update.returnedAt = new Date();
+      if (!current?.confirmedAt) update.confirmedAt = new Date();
+    } else if (body.status === 'NEW') {
+      update.confirmedAt = null;
+      update.returnedAt = null;
+    }
+  }
   if (body.notes !== undefined) update.notes = body.notes;
   await db.collection('quotes').updateOne({ id }, { $set: update });
   const updated = await db.collection('quotes').findOne({ id });
