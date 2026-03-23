@@ -38,7 +38,7 @@ export default function CotizacionesPage() {
       const updated = await res.json();
       setQuotes(prev => prev.map(q => q.id === quoteId ? updated : q));
       if (selectedQuote?.id === quoteId) setSelectedQuote(updated);
-    } catch (e) {} finally { setUpdating(null); }
+    } catch (e) { } finally { setUpdating(null); }
   };
 
   const deleteQuote = async (quoteId) => {
@@ -57,14 +57,25 @@ export default function CotizacionesPage() {
       const margin = 20;
 
       // Header background
-      doc.setFillColor(255, 230, 0);
+      doc.setFillColor('#ffc832');
       doc.rect(0, 0, pageW, 35, 'F');
 
       // Logo / Title
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(28);
-      doc.setTextColor(0, 0, 0);
-      doc.text('HANGAR', margin, 22);
+      try {
+        const logoRes = await fetch('/assets/logos/logo_pdf.png');
+        const logoBlob = await logoRes.blob();
+        const base64 = await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result);
+          reader.readAsDataURL(logoBlob);
+        });
+        doc.addImage(base64, 'PNG', margin, 12, 45, 12);
+      } catch (e) {
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(28);
+        doc.setTextColor(0, 0, 0);
+        doc.text('HANGAR', margin, 22);
+      }
 
       // Folio
       doc.setFontSize(12);
@@ -114,7 +125,7 @@ export default function CotizacionesPage() {
       // Table header
       doc.setFillColor(0, 0, 0);
       doc.rect(margin, y, pageW - margin * 2, 9, 'F');
-      doc.setTextColor(255, 230, 0);
+      doc.setTextColor('#ffc832');
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(8);
       const colWidths = [65, 30, 25, 20, 30];
@@ -152,7 +163,7 @@ export default function CotizacionesPage() {
       y += 10;
 
       // Total
-      doc.setFillColor(255, 230, 0);
+      doc.setFillColor('#ffc832');
       doc.rect(pageW - margin - 60, y, 60, 14, 'F');
       doc.setDrawColor(0);
       doc.rect(pageW - margin - 60, y, 60, 14);
