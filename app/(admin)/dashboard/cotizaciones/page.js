@@ -69,7 +69,10 @@ export default function CotizacionesPage() {
           reader.onloadend = () => resolve(reader.result);
           reader.readAsDataURL(logoBlob);
         });
-        doc.addImage(base64, 'PNG', margin, 12, 45, 12);
+        const imgProps = doc.getImageProperties(base64);
+        const imgWidth = imgProps.width * 25.4 / 96;
+        const imgHeight = imgProps.height * 25.4 / 96;
+        doc.addImage(base64, 'PNG', margin, 12, imgWidth, imgHeight);
       } catch (e) {
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(28);
