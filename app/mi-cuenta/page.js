@@ -218,8 +218,8 @@ export default function MiCuentaPage() {
                         <thead>
                           <tr className="bg-black text-[#ffc832]">
                             <th className="text-left px-3 py-2 text-xs font-black uppercase">Pieza</th>
-                            <th className="text-left px-3 py-2 text-xs font-black uppercase">Fecha de confirmaciÃ³n</th>
-                            <th className="text-left px-3 py-2 text-xs font-black uppercase">Fecha de devoluciÃ³n</th>
+                            <th className="text-left px-3 py-2 text-xs font-black uppercase">Fecha de confirmación</th>
+                            <th className="text-left px-3 py-2 text-xs font-black uppercase">Fecha de devolución</th>
                             <th className="text-left px-3 py-2 text-xs font-black uppercase">Estado</th>
                             <th className="text-center px-3 py-2 text-xs font-black uppercase">Cantidad</th>
                             <th className="text-right px-3 py-2 text-xs font-black uppercase">Precio</th>
