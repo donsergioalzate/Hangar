@@ -181,7 +181,7 @@ export default function MiCuentaPage() {
                         <div className="flex flex-wrap gap-4 text-sm text-gray-600 border-t-2 border-gray-200 pt-3">
                           <span className="flex items-center gap-1"><Calendar size={14} /> {new Date(quote.startDate).toLocaleDateString('es-MX')} — {new Date(quote.endDate).toLocaleDateString('es-MX')}</span>
                           <span className="flex items-center gap-1"><Package size={14} /> {quote.items?.length} props</span>
-                          <span className="font-black text-black">${quote.totalCost?.toLocaleString('es-MX')} MXN</span>
+                          <span className="font-black text-black">S/ {quote.totalCost?.toLocaleString('es-PE')} SOLES</span>
                         </div>
                       </div>
                     );
