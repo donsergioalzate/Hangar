@@ -57,10 +57,10 @@ export default function MiCuentaPage() {
         redirect: false
       });
       if (result?.error) {
-        setError('Email o contraseÃ±a incorrectos. Verifica tus datos.');
+        setError('Email o contraseña incorrectos. Verifica tus datos.');
       }
     } catch (e) {
-      setError('Error al iniciar sesiÃ³n. Intenta de nuevo.');
+      setError('Error al iniciar sesión. Intenta de nuevo.');
     } finally {
       setLoading(false);
     }
@@ -68,7 +68,7 @@ export default function MiCuentaPage() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    if (registerForm.password.length < 6) { setError('La contraseÃ±a debe tener al menos 6 caracteres'); return; }
+    if (registerForm.password.length < 6) { setError('La contraseña debe tener al menos 6 caracteres'); return; }
     setLoading(true);
     setError('');
     try {
@@ -82,16 +82,16 @@ export default function MiCuentaPage() {
       // Auto login after register
       await signIn('credentials', { email: registerForm.email, password: registerForm.password, redirect: false });
     } catch (e) {
-      setError('Error de conexiÃ³n. Intenta de nuevo.');
+      setError('Error de conexión. Intenta de nuevo.');
     } finally {
       setLoading(false);
     }
   };
 
   const formatDate = (value) => {
-    if (!value) return 'Ã¢â‚¬â€';
+    if (!value) return '—';
     const date = new Date(value);
-    if (Number.isNaN(date.getTime())) return 'Ã¢â‚¬â€';
+    if (Number.isNaN(date.getTime())) return '—';
     return date.toLocaleDateString('es-MX', { year: 'numeric', month: 'short', day: '2-digit' });
   };
 
@@ -163,9 +163,9 @@ export default function MiCuentaPage() {
               ) : quotes.length === 0 ? (
                 <div className="card-brutal p-12 text-center">
                   <Package size={40} className="mx-auto mb-4 text-gray-300" />
-                  <p className="font-bold text-gray-500">No tienes cotizaciones aÃºn</p>
+                  <p className="font-bold text-gray-500">No tienes cotizaciones aún</p>
                   <Link href="/catalogo" className="btn-brutal inline-flex items-center gap-2 mt-4 text-sm">
-                    Explorar CatÃ¡logo
+                    Explorar Catálogo
                   </Link>
                 </div>
               ) : (
@@ -186,7 +186,7 @@ export default function MiCuentaPage() {
                           </span>
                         </div>
                         <div className="flex flex-wrap gap-4 text-sm text-gray-600 border-t-2 border-gray-200 pt-3">
-                          <span className="flex items-center gap-1"><Calendar size={14} /> {new Date(quote.startDate).toLocaleDateString('es-MX')} â€” {new Date(quote.endDate).toLocaleDateString('es-MX')}</span>
+                          <span className="flex items-center gap-1"><Calendar size={14} /> {new Date(quote.startDate).toLocaleDateString('es-MX')} — {new Date(quote.endDate).toLocaleDateString('es-MX')}</span>
                           <span className="flex items-center gap-1"><Package size={14} /> {quote.items?.length} props</span>
                           <span className="font-black text-black">S/ {quote.totalCost?.toLocaleString('es-PE')} SOLES</span>
                         </div>
@@ -218,7 +218,7 @@ export default function MiCuentaPage() {
                         <thead>
                           <tr className="bg-black text-[#ffc832]">
                             <th className="text-left px-2 py-2 text-xs font-black uppercase w-[150px]">Pieza</th>
-                            <th className="text-left px-2 py-2 text-xs font-black uppercase w-[120px] whitespace-nowrap">Fecha de confirmaciÃ³n</th>
+                            <th className="text-left px-2 py-2 text-xs font-black uppercase w-[120px] whitespace-nowrap">Fecha de confirmación</th>
                             <th className="text-center px-2 py-2 text-xs font-black uppercase w-[70px] whitespace-nowrap">Cantidad</th>
                             <th className="text-right px-2 py-2 text-xs font-black uppercase w-[90px] whitespace-nowrap">Precio</th>
                           </tr>
@@ -258,7 +258,7 @@ export default function MiCuentaPage() {
         {searchParams.get('unauthorized') && (
           <div className="bg-orange-100 border-4 border-orange-500 p-4 mb-6 flex items-center gap-2">
             <AlertTriangle size={18} className="text-orange-600" />
-            <p className="font-bold text-orange-800 text-sm">No tienes permisos para acceder a esa secciÃ³n.</p>
+            <p className="font-bold text-orange-800 text-sm">No tienes permisos para acceder a esa sección.</p>
           </div>
         )}
 
@@ -268,7 +268,7 @@ export default function MiCuentaPage() {
             onClick={() => { setTab('login'); setError(''); }}
             className={`flex-1 py-3 font-black uppercase text-sm border-r-2 border-black transition-colors ${tab === 'login' ? 'bg-black text-[#ffc832]' : 'bg-[#ffc832] text-black hover:bg-white'}`}
           >
-            Iniciar SesiÃ³n
+            Iniciar Sesión
           </button>
           <button
             onClick={() => { setTab('register'); setError(''); }}
@@ -297,15 +297,15 @@ export default function MiCuentaPage() {
                 />
               </div>
               <div>
-                <label className="text-xs font-black uppercase block mb-2">ContraseÃ±a</label>
+                <label className="text-xs font-black uppercase block mb-2">Contraseña</label>
                 <input
                   type="password" required value={loginForm.password}
                   onChange={e => setLoginForm(p => ({ ...p, password: e.target.value }))}
-                  className="input-brutal" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                  className="input-brutal" placeholder="••••••••"
                 />
               </div>
               <button type="submit" disabled={loading} className="btn-brutal w-full text-center py-4 disabled:opacity-60">
-                {loading ? 'Entrando...' : 'Iniciar SesiÃ³n'}
+                {loading ? 'Entrando...' : 'Iniciar Sesión'}
               </button>
               <p className="text-center text-xs text-gray-600">
                 Demo admin: <span className="font-bold">admin@hangar.mx / Hangar2024!</span>
@@ -331,15 +331,15 @@ export default function MiCuentaPage() {
                   />
                 </div>
                 <div className="sm:col-span-2">
-                  <label className="text-xs font-black uppercase block mb-2">ContraseÃ±a *</label>
+                  <label className="text-xs font-black uppercase block mb-2">Contraseña *</label>
                   <input
                     type="password" required value={registerForm.password}
                     onChange={e => setRegisterForm(p => ({ ...p, password: e.target.value }))}
-                    className="input-brutal" placeholder="MÃ­nimo 6 caracteres"
+                    className="input-brutal" placeholder="Mínimo 6 caracteres"
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-black uppercase block mb-2">TelÃ©fono</label>
+                  <label className="text-xs font-black uppercase block mb-2">Teléfono</label>
                   <input
                     type="tel" value={registerForm.phone}
                     onChange={e => setRegisterForm(p => ({ ...p, phone: e.target.value }))}
