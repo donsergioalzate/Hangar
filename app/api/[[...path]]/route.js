@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import bcrypt from 'bcryptjs';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
+import { RegisterSchema, PropSchema, CategorySchema, QuoteSchema, HiddenEmailSchema } from '@/lib/validations';
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
 
@@ -47,9 +48,10 @@ function getPath(params) {
 
 // POST /api/register
 async function handleRegister(req) {
-  const { name, email, password, phone, productionCompany } = await req.json();
-  if (!name || !email || !password) return err('Nombre, email y contraseña son requeridos');
-  if (password.length < 6) return err('La contraseña debe tener al menos 6 caracteres');
+  const body = await req.json();
+  const parsed = RegisterSchema.safeParse(body);
+  if (!parsed.success) return err(parsed.error.errors[0].message);
+  const { name, email, password, phone, productionCompany } = parsed.data;
   const db = await getDatabase();
   const existing = await db.collection('users').findOne({ email: email.toLowerCase() });
   if (existing) return err('Ya existe una cuenta con este email', 409);
@@ -118,9 +120,9 @@ async function handleCreateProp(req) {
   const session = await getServerSession(authOptions);
   if (!session || session.user.role !== 'ADMIN') return err('No autorizado', 403);
   const body = await req.json();
-  const { name, dimensions, description, pricePerDay, categoryId, images, stockOverride } = body;
-  if (!name || !pricePerDay) return err('Nombre y precio son requeridos');
-  if (images && images.length > 5) return err('Máximo 5 imágenes por prop');
+  const parsed = PropSchema.safeParse(body);
+  if (!parsed.success) return err(parsed.error.errors[0].message);
+  const { name, dimensions, description, pricePerDay, categoryId, images, stockOverride } = parsed.data;
   const db = await getDatabase();
   const prop = {
     id: uuidv4(),
@@ -153,8 +155,10 @@ async function handleGetProp(req, id) {
 async function handleUpdateProp(req, id) {
   const session = await getServerSession(authOptions);
   if (!session || session.user.role !== 'ADMIN') return err('No autorizado', 403);
-  const body = await req.json();
-  if (body.images && body.images.length > 5) return err('Máximo 5 imágenes por prop');
+  let body = await req.json();
+  const parsed = PropSchema.partial().safeParse(body);
+  if (!parsed.success) return err(parsed.error.errors[0].message);
+  body = parsed.data;
   const db = await getDatabase();
   const update = {};
   if (body.name !== undefined) update.name = body.name;
@@ -195,8 +199,10 @@ async function handleGetCategories() {
 async function handleCreateCategory(req) {
   const session = await getServerSession(authOptions);
   if (!session || session.user.role !== 'ADMIN') return err('No autorizado', 403);
-  const { name, slug, parentId } = await req.json();
-  if (!name) return err('Nombre es requerido');
+  const body = await req.json();
+  const parsed = CategorySchema.safeParse(body);
+  if (!parsed.success) return err(parsed.error.errors[0].message);
+  const { name, slug, parentId } = parsed.data;
   const db = await getDatabase();
   const cat = {
     id: uuidv4(),
@@ -253,9 +259,9 @@ async function handleCreateQuote(req) {
   const session = await getServerSession(authOptions);
   if (!session) return err('Debes iniciar sesión para crear una cotización', 401);
   const body = await req.json();
-  const { startDate, endDate, notes, items, userName, userEmail, userPhone, userProductionCompany, userProjectName } = body;
-  if (!startDate || !endDate) return err('Fechas de inicio y fin son requeridas');
-  if (!items || items.length === 0) return err('El carrito está vacío');
+  const parsed = QuoteSchema.safeParse(body);
+  if (!parsed.success) return err(parsed.error.errors[0].message);
+  const { startDate, endDate, notes, items, userName, userEmail, userPhone, userProductionCompany, userProjectName } = parsed.data;
   const db = await getDatabase();
   const totalDays = Math.max(1, Math.ceil((new Date(endDate) - new Date(startDate)) / (1000 * 60 * 60 * 24)) + 1);
   const totalCost = items.reduce((sum, item) => sum + item.pricePerDay * item.quantity * totalDays, 0);
@@ -348,8 +354,10 @@ async function handleGetHiddenEmails() {
 async function handleCreateHiddenEmail(req) {
   const session = await getServerSession(authOptions);
   if (!session || session.user.role !== 'ADMIN') return err('No autorizado', 403);
-  const { email, department } = await req.json();
-  if (!email || !department) return err('Email y departamento son requeridos');
+  const body = await req.json();
+  const parsed = HiddenEmailSchema.safeParse(body);
+  if (!parsed.success) return err(parsed.error.errors[0].message);
+  const { email, department } = parsed.data;
   const db = await getDatabase();
   const he = { id: uuidv4(), email, department };
   await db.collection('hiddenEmails').insertOne(he);

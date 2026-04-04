@@ -1,0 +1,8 @@
+[build]
+builder = "NIXPACKS"
+# By default Railway detects yarn and uses it.
+# If Next.js output is standalone, it's highly recommended to utilize it.
+
+[deploy]
+startCommand = "yarn start"
+restartPolicyType = "ON_FAILURE"
